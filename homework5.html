@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body {
+			background-color: rgb(110, 222, 124);
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var aInput = document.getElementsByTagName("input");
+			var num1 = 110;
+			var num2 = 222;
+			var num3 = 124;
+			aInput[0].onclick = function() {
+				num1--;
+				aInput[1].value = num1;
+			}
+			aInput[2].onclick = function() {
+				num1++;
+				aInput[1].value = num1;
+			}
+			aInput[3].onclick = function() {
+				num2--;
+				aInput[4].value = num2;
+			}
+			aInput[5].onclick = function() {
+				num2++;
+				aInput[4].value = num2;
+			}
+			aInput[6].onclick = function() {
+				num3--;
+				aInput[7].value = num3;
+			}
+			aInput[8].onclick = function() {
+				num3++;
+				aInput[7].value = num3;
+			}
+			aInput[9].onclick = function() {
+				document.body.style.backgroundColor = "rgb(" + aInput[1].value + "," + aInput[4].value + "," + aInput[7].value + ")";
+				var set = window.localStorage;
+				set.setItem("img", document.body.style.backgroundColor);
+				set.setItem("num1", aInput[1].value);
+				set.setItem("num2", aInput[4].value);
+				set.setItem("num3", aInput[7].value);
+			}
+
+			function get() {
+				var get = window.localStorage;
+				document.body.style.backgroundColor = get.getItem("img");
+				aInput[1].value = get.getItem("num1");
+				aInput[4].value = get.getItem("num2");
+				aInput[7].value = get.getItem("num3");
+			}
+			get();
+		}
+	</script>
+</head>
+
+<body>
+	<p>
+		红:
+		<input type="button" value="-" id="btnRL" />
+		<input type="text" value="110" id="r_txt" />
+		<input type="button" value="+" id="btnRR" />
+	</p>
+	<p>
+		绿:
+		<input type="button" value="-" id="btnGL" />
+		<input type="text" value="222" id="g_txt" />
+		<input type="button" value="+" id="btnGR" />
+	</p>
+	<p>
+		蓝:
+		<input type="button" value="-" id="btnBL" />
+		<input type="text" value="124" id="b_txt" />
+		<input type="button" value="+" id="btnBR" />
+	</p>
+	<p><input type="button" value="生成颜色" id="go" /></p>
+</body>
+
+</html>

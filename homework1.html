@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    #box {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: absolute;
+      top: 400px;
+      left: 600px;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function(){
+      var box = document.getElementById("box");
+      var tab = document.getElementById("tab");
+      var tds = tab.getElementsByTagName("td");
+      var tt = 400;
+      var bb = 600;
+      tds[0].onclick = function () {
+        tt-=8;
+        bb-=8;
+        move();
+      }
+      tds[1].onclick = function () {
+        tt-=8;
+        move();
+      }
+      tds[2].onclick = function () {
+        tt-=8;
+        bb+=8;
+        move();
+      }
+      tds[3].onclick = function () {
+        bb+=8;
+        move();
+      }
+      tds[5].onclick = function () {
+        bb+=8;
+        move();
+      }
+      tds[6].onclick = function () {
+        tt+=8;
+        bb-=8;
+        move();
+      }
+      tds[7].onclick = function () {
+        tt+=8;
+        move();
+      }
+      tds[8].onclick = function () {
+        tt+=8;
+        bb+=8;
+        move();
+      }
+      function move() {
+        box.style.top = tt+"px";
+        box.style.left = bb+"px";
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="box"></div>
+  <table id="tab" border="1">
+    <tr>
+      <td>↖</td>
+      <td>↑</td>
+      <td>↗</td>
+    </tr>
+    <tr>
+      <td>←</td>
+      <td>㊣</td>
+      <td>→</td>
+    </tr>
+    <tr>
+      <td>↙</td>
+      <td>↓</td>
+      <td>↘</td>
+    </tr>
+  </table>
+</body>
+</html>

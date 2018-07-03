@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="上一张" id="btn1" />
+	<img src="images/b1.jpg" id="aImg" alt="" />
+	<input type="button" value="下一张" id="btn2" />
+
+	<script type="text/javascript">
+		//用字符串拼接法
+		var num = 1;
+		var aImg = document.getElementById("aImg");
+		var btn1 = document.getElementById("btn1");
+		var btn2 = document.getElementById("btn2");
+		btn1.onclick = function () {
+			num++;
+			if(num>4){
+				num=1;
+			}
+			picture();
+		}
+		btn2.onclick = function () {
+			num--;
+			if(num<1){
+				num=4;
+			}
+			picture();
+		}
+		function picture() {
+			aImg.setAttribute("src","images/b"+num+".jpg");
+			var set = window.localStorage;
+			set.setItem("images",aImg.getAttribute("src"));
+		}
+		function get(){
+			var get = window.localStorage;
+			var bb=get.getItem("images");
+			aImg.setAttribute("src",bb);
+		}
+		get();
+	</script>
+</body>
+</html>
